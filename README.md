@@ -9,7 +9,7 @@ Here's how to deploy it on CentOS systems:
 1. Install FirewallD
 
 ```
-sudo yum install -y firewalld
+sudo apt-get install -y firewalld
 sudo systemctl start firewalld
 sudo systemctl enable firewalld
 sudo systemctl status firewalld
@@ -20,7 +20,7 @@ sudo systemctl status firewalld
 1. Install MariaDB
 
 ```
-sudo yum install -y mariadb-server
+sudo apt-get install -y mariadb-server
 sudo vi /etc/my.cnf
 sudo systemctl start mariadb
 sudo systemctl enable mariadb
@@ -36,7 +36,7 @@ sudo firewall-cmd --reload
 3. Configure Database
 
 ```
-$ mysql
+sudo mysql
 MariaDB > CREATE DATABASE ecomdb;
 MariaDB > CREATE USER 'ecomuser'@'localhost' IDENTIFIED BY 'ecompassword';
 MariaDB > GRANT ALL PRIVILEGES ON *.* TO 'ecomuser'@'localhost';
@@ -72,7 +72,7 @@ sudo mysql < db-load-script.sql
 1. Install required packages
 
 ```
-sudo yum install -y httpd php php-mysqlnd
+sudo apt-get install -y nginx php php-mysqlnd
 sudo firewall-cmd --permanent --zone=public --add-port=80/tcp
 sudo firewall-cmd --reload
 ```
@@ -88,14 +88,14 @@ sudo sed -i 's/index.html/index.php/g' /etc/httpd/conf/httpd.conf
 3. Start httpd
 
 ```
-sudo systemctl start httpd
-sudo systemctl enable httpd
+sudo systemctl start nginx
+sudo systemctl enable nginx
 ```
 
 4. Download code
 
 ```
-sudo yum install -y git
+sudo apt-get install -y git
 sudo git clone https://github.com/kodekloudhub/learning-app-ecommerce.git /var/www/html/
 ```
 
